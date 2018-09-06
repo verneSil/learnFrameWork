@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: clusterconfig-server
+  cloud:
+    config:
+      profile: dev
+      server:
+        git:
+          username: zuo
+          password: zxc
+          uri: https://github.com/forezp/SpringcloudConfig
+          search-paths: respo
+      label: master
+server:
+  port: 8888
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8889/eureka
