@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeHandlers>
+        <typeHandler handler="com.meituan.baobab.framework.handler.EnumValueTypeHandler"
+                     javaType="com.meituan.baobab.common.lang.constant.IStatusEnum"/>
+        <typeHandler handler="com.meituan.baobab.framework.handler.EnumValueTypeHandler"
+                     javaType="com.meituan.baobab.haina.stock.constant.StockRequestTypeEnum"/>
+        <typeHandler handler="com.meituan.baobab.framework.handler.EnumValueTypeHandler"
+                     javaType="com.meituan.baobab.haina.stock.constant.StockAreaTypeEnum"/>
+        <typeHandler handler="com.meituan.baobab.framework.handler.EnumValueTypeHandler"
+                     javaType="com.meituan.baobab.haina.stock.constant.StockLockStatusEnum"/>
+        <typeHandler handler="com.meituan.baobab.framework.handler.EnumValueTypeHandler"
+                     javaType="com.meituan.baobab.haina.stock.constant.StockLockTypeEnum"/>
+        <typeHandler handler="com.meituan.baobab.framework.handler.EnumValueTypeHandler"
+                     javaType="com.meituan.baobab.haina.stock.constant.StockOperateTypeEnum"/>
+        <typeHandler handler="com.meituan.baobab.framework.handler.EnumValueTypeHandler"
+                     javaType="com.meituan.baobab.haina.stock.constant.TaskBillTypeEnum"/>
+        <typeHandler handler="com.meituan.baobab.framework.handler.EnumValueTypeHandler"
+                     javaType="com.meituan.baobab.haina.stock.constant.StockMqEventTypeEnum"/>
+        <typeHandler handler="com.meituan.baobab.framework.handler.EnumValueTypeHandler"
+                     javaType="com.meituan.baobab.haina.stock.constant.ScheduleStatusEnum"/>
+        <typeHandler handler="com.meituan.baobab.framework.handler.EnumValueTypeHandler"
+                     javaType="com.meituan.baobab.haina.stock.constant.CheckResultEnum"/>
+        <typeHandler handler="com.meituan.baobab.framework.handler.EnumValueTypeHandler"
+                     javaType="com.meituan.baobab.haina.stock.constant.StockSplitTypeEnum"/>
+        <typeHandler handler="com.meituan.baobab.framework.handler.EnumValueTypeHandler"
+                     javaType="com.meituan.baobab.haina.stock.constant.ProcessStatusEnum"/>
+        <typeHandler handler="com.meituan.baobab.framework.handler.EnumValueTypeHandler"
+                     javaType="com.meituan.baobab.haina.stock.constant.SwitchMultySpecBackupTypeEnum"/>
+    </typeHandlers>
+    <plugins>
+        <!-- http://git.oschina.net/free/Mybatis_PageHelper -->
+        <!-- com.github.pagehelper为PageHelper类所在包名 -->
+        <plugin interceptor="com.github.pagehelper.PageHelper">
+            <property name="dialect" value="mysql"/>
+            <!-- 该参数默认为false -->
+            <!-- 设置为true时，会将RowBounds第一个参数offset当成pageNum页码使用 -->
+            <!-- 和startPage中的pageNum效果一样 -->
+            <property name="offsetAsPageNum" value="true"/>
+            <!-- 该参数默认为false -->
+            <!-- 设置为true时，使用RowBounds分页会进行count查询 -->
+            <property name="rowBoundsWithCount" value="true"/>
+            <!-- 设置为true时，如果pageSize=0或者RowBounds.limit = 0就会查询出全部的结果 -->
+            <!-- （相当于没有执行分页查询，但是返回结果仍然是Page类型） -->
+            <property name="pageSizeZero" value="false"/>
+            <!-- 3.3.0版本可用 - 分页参数合理化，默认false禁用 -->
+            <!-- 启用合理化时，如果pageNum<1会查询第一页，如果pageNum>pages会查询最后一页 -->
+            <!-- 禁用合理化时，如果pageNum<1或pageNum>pages会返回空数据 -->
+            <property name="reasonable" value="true"/>
+        </plugin>
+        <plugin interceptor="com.meituan.baobab.common.encryption.interceptor.SecurityExecutorInterceptor"></plugin>
+        <plugin interceptor="com.meituan.baobab.common.encryption.interceptor.SecurityResultSetInterceptor"></plugin>
+
+        <!--租户统一处理自定制插件-->
+        <plugin interceptor="com.meituan.baobab.haina.stock.common.saas.ChannelIdIgnoreHelper">
+            <!--需要设置租户处理的表";"隔开-->
+            <property name="channelIdTables"
+                      value="stock_request;stock_info;stock_allocation;stock_log;stock_info_snapshot;stock_summary;stock_summary_snapshot;stock_supplier;stock_operate;warehouse_switch_tmp;warehouse_switch_summary;warehouse_switch_excel;stock_split_log;stock_summary_date;stock_summary_date_snapshot;mq_retry_info;stock_allocation_freeze"/>
+            <property name="channelIdIgnoreMethods"
+                      value="StockInfoMapper.batchUpdateStockInfoByInc;StockAllocationMapper.batchUpdateStockAllocationByIdAndLockStatus;StockAllocationMapper.batchUpdateStockAllocationQty;StockInfoMapper.batchUpdateStockInfo4Freeze;StockInfoMapper.batchUpdateStockInfoQtyById4FreezeUnlock;StockInfoMapper.batchUpdateStockInfo4PreSale"/>
+            <!--开启saas设置,默认就是为true,可以不设置,如果暂时不需要处理,可以设置为false-->
+            <property name="enableSaaS" value="true"/>
+            <!--租户id的表字段名称,默认为channel_id;如果表中租户就是channel_id,这里可以不用配置-->
+            <property name="channelIdColumnName" value="channel_id"/>
+            <!--是否支持连表查询 默认值false-->
+            <property name="enableJoinSelect" value="true"/>
+            <!--是否允许在配置了channelIdTables的表在操作的过程中,channeld为空 默认false 慎用true!-->
+            <!-- <property name="enableChannelIsNull" value="true"/> -->
+        </plugin>
+    </plugins>
+
+</configuration>
