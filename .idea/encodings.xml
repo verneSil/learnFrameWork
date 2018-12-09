@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/clusterconfigclient" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/clusterconfigserver" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/configclient" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/configeurekaserver" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eurekaclient" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eurekaserver" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fegin" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/kafkademo1" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mybatisdemo" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ribbon" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/serverconfig" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/zuuldemo" charset="UTF-8" />
+  </component>
+</project>

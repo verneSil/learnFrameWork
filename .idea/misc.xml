@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="JavaScriptSettings">
+    <option name="languageLevel" value="ES6" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/eurekaserver/pom.xml" />
+        <option value="$PROJECT_DIR$/eurekaclient/pom.xml" />
+        <option value="$PROJECT_DIR$/ribbon/pom.xml" />
+        <option value="$PROJECT_DIR$/fegin/pom.xml" />
+        <option value="$PROJECT_DIR$/zuuldemo/pom.xml" />
+        <option value="$PROJECT_DIR$/serverconfig/pom.xml" />
+        <option value="$PROJECT_DIR$/configclient/pom.xml" />
+        <option value="$PROJECT_DIR$/clusterconfigserver/pom.xml" />
+        <option value="$PROJECT_DIR$/configeurekaserver/pom.xml" />
+        <option value="$PROJECT_DIR$/clusterconfigclient/pom.xml" />
+        <option value="$PROJECT_DIR$/kafkademo1/pom.xml" />
+        <option value="$PROJECT_DIR$/mybatisdemo/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

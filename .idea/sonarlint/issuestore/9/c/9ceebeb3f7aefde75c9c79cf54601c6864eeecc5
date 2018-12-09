@@ -1,0 +1,6 @@
+
+zsquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ä‘Ó—ıÿÿÿÿ8·±ÿİÕ,
+squid:UselessImportCheck"eRemove this unused import 'org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory'.(Âàˆ\8·±ÿİÕ,
+Nsquid:S1068"2Remove this unused "TEMPLATE_TOPIC" private field.(èê‚£8·±ÿİÕ,
+^squid:UselessImportCheck"0Remove this unused import 'org.junit.ClassRule'.(¥Úçéúÿÿÿÿ8·±ÿİÕ,
+{squid:UselessImportCheck"MRemove this unused import 'org.apache.kafka.clients.consumer.ConsumerConfig'.(éöò˜üÿÿÿÿ8·±ÿİÕ,
