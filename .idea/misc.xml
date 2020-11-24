@@ -20,6 +20,7 @@
         <option value="$PROJECT_DIR$/clusterconfigclient/pom.xml" />
         <option value="$PROJECT_DIR$/kafkademo1/pom.xml" />
         <option value="$PROJECT_DIR$/mybatisdemo/pom.xml" />
+        <option value="$PROJECT_DIR$/leanrScope/pom.xml" />
       </list>
     </option>
   </component>
