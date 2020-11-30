@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class TestComponent {
 
-    @Value(value = "${testCount:1}")
+    @Value(value = "${test1.testValue:1}")
     private  String testCount;
 
     public String getTestCount() {

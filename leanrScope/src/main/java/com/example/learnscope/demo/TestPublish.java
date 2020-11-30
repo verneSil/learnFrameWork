@@ -4,6 +4,7 @@ import java.util.HashMap;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.environment.EnvironmentChangeEvent;
+import org.springframework.cloud.context.refresh.ContextRefresher;
 import org.springframework.cloud.endpoint.event.RefreshEvent;
 import org.springframework.cloud.endpoint.event.RefreshEventListener;
 import org.springframework.context.ApplicationContext;
@@ -29,6 +30,9 @@ public class TestPublish implements ApplicationContextAware, ApplicationEventPub
     @Autowired
     private RefreshEventListener refresh;
 
+    @Autowired
+    private ContextRefresher contextRefresher;
+
 //    private String testValue;
 
     @Override
@@ -40,15 +44,16 @@ public class TestPublish implements ApplicationContextAware, ApplicationEventPub
 
         ConfigurableEnvironment environment = (ConfigurableEnvironment) applicationContext.getEnvironment();
         HashMap<String, Object> objectObjectHashMap = new HashMap<>();
-        objectObjectHashMap.put("testCount", String.valueOf(count++));
+        objectObjectHashMap.put("test1.testValue", String.valueOf(count++));
         PropertySource propertySource = new MapPropertySource("myPropertyResource", objectObjectHashMap);
 
         environment.getPropertySources().addLast(propertySource);
         EnvironmentChangeEvent environmentChangeEvent = new EnvironmentChangeEvent(objectObjectHashMap.keySet());
-        this.applicationEventPublisher.publishEvent(environmentChangeEvent);
-        // 下面这句和上面的效果相同
+//        this.applicationEventPublisher.publishEvent(environmentChangeEvent);
+//         下面这句和上面的效果相同
 //        applicationContext.publishEvent(environmentChangeEvent);
         refresh.handle(new RefreshEvent("event", environmentChangeEvent, "event"));
+//        contextRefresher.refresh();
 
     }
 
