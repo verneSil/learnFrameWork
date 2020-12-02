@@ -33,6 +33,6 @@ public class InitBeanController {
 
     @GetMapping("/annotation")
     public String getAnnotation() {
-        return annotationComponent.toString();
+        return annotationComponent.getsomething();
     }
 }
